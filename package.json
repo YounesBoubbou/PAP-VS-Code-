@@ -1,23 +1,23 @@
 {
-  "name": "claude-code-",
+  "name": "pap-vs-code",
   "version": "1.0.0",
-  "description": "",
+  "description": "Patient Adherence Program At Home (PAPAH) - static landing site",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nickjharms/pap-landing-page.git"
+    "url": "git+https://github.com/YounesBoubbou/PAP-VS-Code-.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/nickjharms/pap-landing-page/issues"
+    "url": "https://github.com/YounesBoubbou/PAP-VS-Code-/issues"
   },
-  "homepage": "https://github.com/nickjharms/pap-landing-page#readme",
+  "homepage": "https://younesboubbou.github.io/PAP-VS-Code-/",
   "dependencies": {
     "puppeteer-core": "^24.40.0"
   }
