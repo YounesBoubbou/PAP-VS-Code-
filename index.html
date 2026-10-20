@@ -104,12 +104,12 @@
       <!-- Logo -->
       <a href="#hero" class="flex items-center gap-3 group">
         <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-base shadow-teal-sm" style="background:linear-gradient(135deg,#0a8f8f,#1ab3b3)">✚</div>
-        <span class="text-white font-semibold text-lg tracking-snug">Patient Adherence Program</span>
+        <span class="text-white font-semibold text-base md:text-lg tracking-snug">Patient Adherence Program</span>
       </a>
       <!-- Links -->
       <ul class="hidden md:flex items-center gap-8 list-none">
         <li><a href="#about"      class="text-white/70 hover:text-white text-sm font-medium transition-colors duration-150">About</a></li>
-        <li><a href="https://form.jotform.com/262454319149057" target="_blank" rel="noopener" class="text-white/70 hover:text-white text-sm font-medium transition-colors duration-150">Screening Form</a></li>
+        <li><a href="#screening" class="text-white/70 hover:text-white text-sm font-medium transition-colors duration-150">Screening Form</a></li>
         <li><a href="#how"        class="text-white/70 hover:text-white text-sm font-medium transition-colors duration-150">How It Works</a></li>
         <li><a href="#benefits"   class="text-white/70 hover:text-white text-sm font-medium transition-colors duration-150">Benefits</a></li>
         <li><a href="#faq"        class="text-white/70 hover:text-white text-sm font-medium transition-colors duration-150">FAQ</a></li>
@@ -121,6 +121,25 @@
         <a href="#enroll" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white shadow-teal-sm btn-press transition-all duration-200 hover:shadow-teal hover:-translate-y-0.5" style="background:linear-gradient(135deg,#0a8f8f,#1ab3b3)">
           Enroll Free →
         </a>
+      </div>
+      <!-- Mobile menu toggle -->
+      <button id="nav-toggle" type="button" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"
+              class="md:hidden w-10 h-10 -mr-2 rounded-lg flex items-center justify-center text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 transition-colors duration-150">
+        <svg id="nav-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="nav-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="md:hidden hidden pb-4">
+      <div class="rounded-2xl border border-white/12 p-3 shadow-xl" style="background:#0d1f3c">
+        <a href="#about"     class="block px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors duration-150">About</a>
+        <a href="#screening" class="block px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors duration-150">Screening Form</a>
+        <a href="#how"       class="block px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors duration-150">How It Works</a>
+        <a href="#benefits"  class="block px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors duration-150">Benefits</a>
+        <a href="#faq"       class="block px-3 py-2.5 rounded-lg text-white/80 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors duration-150">FAQ</a>
+        <div class="h-px bg-white/10 my-3"></div>
+        <a href="login.html" class="block text-center px-4 py-2.5 mb-2 rounded-full text-sm font-semibold text-white/85 border border-white/25 hover:bg-white/10 hover:text-white transition-all duration-200">Log In</a>
+        <a href="#enroll"    class="block text-center px-4 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-200" style="background:linear-gradient(135deg,#0a8f8f,#1ab3b3)">Enroll Free →</a>
       </div>
     </div>
   </div>
@@ -161,34 +180,13 @@
           <div class="flex items-center gap-2 text-white/50 text-xs font-medium"><span>🎓</span> Student demonstration project</div>
         </div>
       </div>
-      <!-- Right — stats card -->
+      <!-- Right — demo disclaimer -->
       <div class="reveal" style="transition-delay:.1s">
-        <div class="rounded-2xl p-7 border border-white/12 backdrop-blur-md" style="background:rgba(255,255,255,0.07)">
-          <p class="text-white/50 text-xs font-semibold tracking-widest uppercase mb-5">Program at a Glance</p>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="rounded-xl p-4 border border-white/8" style="background:rgba(255,255,255,0.06)">
-              <div class="text-3xl font-bold text-white tracking-tight leading-none mb-1">87<span class="text-teal-300 text-xl">%</span></div>
-              <div class="text-white/55 text-xs leading-snug">Adherence rate improvement</div>
-            </div>
-            <div class="rounded-xl p-4 border border-white/8" style="background:rgba(255,255,255,0.06)">
-              <div class="text-3xl font-bold text-white tracking-tight leading-none mb-1">42<span class="text-teal-300 text-xl">%</span></div>
-              <div class="text-white/55 text-xs leading-snug">Fewer hospital readmissions</div>
-            </div>
-            <div class="rounded-xl p-4 border border-white/8" style="background:rgba(255,255,255,0.06)">
-              <div class="text-3xl font-bold text-white tracking-tight leading-none mb-1">12<span class="text-teal-300 text-xl">k+</span></div>
-              <div class="text-white/55 text-xs leading-snug">Active enrolled patients</div>
-            </div>
-            <div class="rounded-xl p-4 border border-white/8" style="background:rgba(255,255,255,0.06)">
-              <div class="text-3xl font-bold text-white tracking-tight leading-none mb-1">4.9<span class="text-teal-300 text-xl">/5</span></div>
-              <div class="text-white/55 text-xs leading-snug">Patient satisfaction score</div>
-            </div>
-          </div>
-          <div class="mt-4 rounded-xl p-4 flex items-center gap-3 border border-teal-400/20" style="background:rgba(10,143,143,0.15)">
-            <span class="text-2xl">⭐</span>
-            <div>
-              <div class="text-white font-semibold text-sm">Student demonstration project</div>
-              <div class="text-white/50 text-xs">Not a real clinical service</div>
-            </div>
+        <div class="rounded-2xl p-6 flex items-center gap-4 border border-teal-400/25 backdrop-blur-md" style="background:rgba(10,143,143,0.15)">
+          <span class="text-3xl">⭐</span>
+          <div>
+            <div class="text-white font-semibold">Student demonstration project</div>
+            <div class="text-white/55 text-sm">Not a real clinical service</div>
           </div>
         </div>
       </div>
@@ -298,7 +296,7 @@
       <div class="reveal text-center relative z-10" style="transition-delay:.04s">
         <div class="w-[72px] h-[72px] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6 shadow-teal" style="background:linear-gradient(135deg,#0d1f3c,#0a8f8f)">1</div>
         <h3 class="font-bold text-navy mb-2 tracking-snug">Enroll &amp; Assess</h3>
-        <p class="text-slate-500 text-sm leading-body">Complete a brief intake and health assessment. Our care team reviews your case within 24 hours.</p>
+        <p class="text-slate-500 text-sm leading-body">Complete a brief intake, and physiotherapeutic assessment with your physiotherapist. Complete the Adherence Screening form below to check your eligibility for PAPAH.</p>
       </div>
       <div class="reveal text-center relative z-10" style="transition-delay:.10s">
         <div class="w-[72px] h-[72px] rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6 shadow-teal" style="background:linear-gradient(135deg,#0d1f3c,#0a8f8f)">2</div>
@@ -315,6 +313,18 @@
         <h3 class="font-bold text-navy mb-2 tracking-snug">Track &amp; Improve</h3>
         <p class="text-slate-500 text-sm leading-body">Monthly progress reviews. Your plan evolves as your health improves, keeping you on the right path.</p>
       </div>
+    </div>
+
+    <!-- Adherence Screening form -->
+    <div id="screening" class="max-w-3xl mx-auto mt-20 reveal">
+      <h3 class="serif text-navy text-center tracking-tight mb-3" style="font-size:clamp(24px,2.8vw,32px)">Adherence Screening Form</h3>
+      <p class="text-slate-500 text-center mb-8 leading-body">Fill this in to check your eligibility for PAPAH.</p>
+      <div class="rounded-2xl overflow-hidden shadow-card bg-white border border-slate-100">
+        <!-- Height is set by JotForm's embed handler further down, so the form never scrolls inside the page -->
+        <iframe id="JotFormIFrame-262454319149057" src="https://form.jotform.com/262454319149057" title="PAPAH Adherence Screening Form"
+                class="w-full block" style="height:1050px;border:0" scrolling="no" allowtransparency="true" allow="geolocation; microphone; camera; fullscreen"></iframe>
+      </div>
+      <p class="text-slate-400 text-xs text-center mt-4">Trouble loading the form? <a href="https://form.jotform.com/262454319149057" target="_blank" rel="noopener" class="text-teal font-medium hover:underline">Open it in a new tab</a>.</p>
     </div>
   </div>
 </section>
@@ -613,7 +623,7 @@
       <div class="lg:col-span-1">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold shadow-teal-sm" style="background:linear-gradient(135deg,#0a8f8f,#1ab3b3)">✚</div>
-          <span class="text-white font-semibold text-lg">Professional Adherence Program</span>
+          <span class="text-white font-semibold text-lg">Patient Adherence Program</span>
         </div>
         <p class="text-white/45 text-sm leading-body max-w-[240px]">Empowering patients to stay on track with personalized support, education, and care coordination.</p>
       </div>
@@ -621,7 +631,7 @@
         <div class="text-xs font-bold uppercase tracking-widest text-white/40 mb-5">Program</div>
         <div class="space-y-3">
           <a href="#about"      class="block text-white/60 text-sm hover:text-white transition-colors duration-150">About PAP</a>
-          <a href="https://form.jotform.com/262454319149057" target="_blank" rel="noopener" class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Screening Form</a>
+          <a href="#screening" class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Screening Form</a>
           <a href="#how"        class="block text-white/60 text-sm hover:text-white transition-colors duration-150">How It Works</a>
           <a href="#benefits"   class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Benefits</a>
           <a href="#enroll"     class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Enroll Now</a>
@@ -632,26 +642,19 @@
         <div class="space-y-3">
           <a href="#faq"     class="block text-white/60 text-sm hover:text-white transition-colors duration-150">FAQ</a>
           <a href="#contact" class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Contact Us</a>
-          <a href="#"        class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Patient Portal</a>
-          <a href="#"        class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Provider Resources</a>
-          <a href="#"        class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Insurance Info</a>
         </div>
       </div>
       <div>
         <div class="text-xs font-bold uppercase tracking-widest text-white/40 mb-5">Legal</div>
         <div class="space-y-3">
-          <a href="#" class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Privacy Policy</a>
-          <a href="#" class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Terms of Service</a>
-          <a href="#" class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Accessibility</a>
-          <a href="#" class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Nondiscrimination</a>
+          <a href="Privacy%20Policy%20PAPAH.pdf" target="_blank" rel="noopener" class="block text-white/60 text-sm hover:text-white transition-colors duration-150">Privacy Policy</a>
         </div>
       </div>
     </div>
     <div class="pt-8 border-t border-white/8 flex flex-wrap justify-between items-center gap-4">
       <div class="text-white/35 text-xs">© 2024 Patient Adherence Program. All rights reserved.</div>
       <div class="flex gap-6">
-        <a href="#" class="text-white/35 text-xs hover:text-white/70 transition-colors">Privacy</a>
-        <a href="#" class="text-white/35 text-xs hover:text-white/70 transition-colors">Terms</a>
+        <a href="Privacy%20Policy%20PAPAH.pdf" target="_blank" rel="noopener" class="text-white/35 text-xs hover:text-white/70 transition-colors">Privacy</a>
         <a href="#" class="text-white/35 text-xs hover:text-white/70 transition-colors">Sitemap</a>
       </div>
     </div>
@@ -661,6 +664,12 @@
 <!-- ═══════════════════════════════════════════════════════
      JAVASCRIPT
 ═══════════════════════════════════════════════════════ -->
+<!-- Auto-sizes the embedded screening form to its content -->
+<script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+<script>
+  window.jotformEmbedHandler("iframe[id='JotFormIFrame-262454319149057']", "https://form.jotform.com");
+</script>
+
 <script>
   // Navbar — scroll glass effect
   const navbar = document.getElementById('navbar');
@@ -701,6 +710,7 @@
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
+      setMobileMenu(false);
       const target = document.querySelector(a.getAttribute('href'));
       if (target) {
         e.preventDefault();
@@ -708,6 +718,21 @@
       }
     });
   });
+
+  // Mobile menu
+  function setMobileMenu(open) {
+    const btn = document.getElementById('nav-toggle');
+    document.getElementById('mobile-menu').classList.toggle('hidden', !open);
+    document.getElementById('nav-icon-open').classList.toggle('hidden', open);
+    document.getElementById('nav-icon-close').classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  function toggleMobileMenu() {
+    setMobileMenu(document.getElementById('mobile-menu').classList.contains('hidden'));
+  }
+  // Collapse the menu if the viewport grows past the mobile breakpoint
+  window.addEventListener('resize', () => { if (window.innerWidth >= 768) setMobileMenu(false); });
 
   // Enroll form
   function handleEnroll(e) {

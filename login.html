@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Log In — Professional Adherence Program</title>
+  <title>Log In — Patient Adherence Program</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -95,7 +95,7 @@
     <!-- Logo -->
     <a href="index.html" class="relative z-10 flex items-center gap-3">
       <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold shadow-teal-sm" style="background:linear-gradient(135deg,#0a8f8f,#1ab3b3)">✚</div>
-      <span class="text-white font-semibold text-lg">Professional Adherence Program</span>
+      <span class="text-white font-semibold text-lg">Patient Adherence Program</span>
     </a>
 
     <!-- Center copy -->
@@ -144,7 +144,7 @@
     <!-- Mobile logo -->
     <a href="index.html" class="flex lg:hidden items-center gap-3 mb-10">
       <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold shadow-teal-sm" style="background:linear-gradient(135deg,#0a8f8f,#1ab3b3)">✚</div>
-      <span class="font-semibold text-lg" style="color:#0d1f3c">Professional Adherence Program</span>
+      <span class="font-semibold text-lg" style="color:#0d1f3c">Patient Adherence Program</span>
     </a>
 
     <div class="w-full max-w-[420px]">
@@ -156,7 +156,7 @@
         <span class="text-lg mt-0.5">🔑</span>
         <div>
           <div class="text-sm font-semibold" style="color:#076e6e">Development Mode</div>
-          <div class="text-xs leading-relaxed mt-0.5" style="color:#0a8f8f">Use your test credentials to access the dashboard.</div>
+          <div class="text-xs leading-relaxed mt-0.5" style="color:#0a8f8f">Use the following demo login credentials to access the dashboard:<br>username: Nickj; password: 1234</div>
         </div>
       </div>
 
@@ -171,7 +171,6 @@
         <div class="mb-2">
           <div class="flex justify-between items-center mb-1.5">
             <label class="block text-xs font-semibold" style="color:#0d1f3c">Password</label>
-            <a href="#" class="text-xs font-medium hover:underline" style="color:#0a8f8f">Forgot password?</a>
           </div>
           <div class="relative">
             <input type="password" id="password" class="input-field" placeholder="••••••••" style="padding-right:44px" />
@@ -206,7 +205,7 @@
 
       <!-- Footer links -->
       <div class="flex justify-center gap-5 mt-10">
-        <a href="#" class="text-xs hover:underline" style="color:#b8c9d9">Privacy Policy</a>
+        <a href="Privacy%20Policy%20PAPAH.pdf" target="_blank" rel="noopener" class="text-xs hover:underline" style="color:#b8c9d9">Privacy Policy</a>
         <a href="#" class="text-xs hover:underline" style="color:#b8c9d9">Help</a>
       </div>
     </div>
@@ -220,22 +219,6 @@
       else                           { input.type = 'password'; btn.textContent = '👁️'; }
     }
 
-    function seedPatientData() {
-      const today = new Date();
-      const todayStr = today.toISOString().slice(0, 10);
-      const tomorrow = new Date(today);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const tomorrowStr = tomorrow.toISOString().slice(0, 10);
-
-      const patients = [
-        { id:'pat_seed_1', name:'Maria Garcia', email:'maria.garcia@email.com', phone:'(555) 234-5678', pathology:'Chronic Disease Management', notes:'Diabetes Type 2, currently on metformin. Weekly check-in calls preferred.', scheduledDates: [todayStr+'T10:00'], createdAt: new Date().toISOString() },
-        { id:'pat_seed_2', name:'James Wilson', email:'james.w@email.com', phone:'(555) 345-6789', pathology:'Post-Surgical Recovery', notes:'Knee replacement 2 weeks ago. Physical therapy adherence tracking.', scheduledDates: [todayStr+'T14:30'], createdAt: new Date().toISOString() },
-        { id:'pat_seed_3', name:'Sarah Chen', email:'sarah.chen@email.com', phone:'(555) 456-7890', pathology:'Mental Health & Behavioral', notes:'Anxiety management program. Prefers afternoon calls.', scheduledDates: [todayStr+'T16:00'], createdAt: new Date().toISOString() },
-        { id:'pat_seed_4', name:'Robert Johnson', email:'r.johnson@email.com', phone:'(555) 567-8901', pathology:'Respiratory & Pulmonary', notes:'COPD management. Inhaler technique follow-up needed.', scheduledDates: [tomorrowStr+'T09:00'], createdAt: new Date().toISOString() },
-        { id:'pat_seed_5', name:'Linda Thompson', email:'linda.t@email.com', phone:'(555) 678-9012', pathology:'Senior & Geriatric Care', notes:'Multiple medications. Caregiver (daughter) involved in calls.', scheduledDates: [tomorrowStr+'T11:00'], createdAt: new Date().toISOString() }
-      ];
-      localStorage.setItem('pap_patients', JSON.stringify(patients));
-    }
 
     function handleLogin(e) {
       e.preventDefault();
@@ -245,9 +228,6 @@
 
       if (username === 'Nickj' && password === '1234') {
         localStorage.setItem('pap_user', JSON.stringify({ username: 'Nickj' }));
-        if (!localStorage.getItem('pap_patients')) {
-          seedPatientData();
-        }
         btn.textContent = '✓ Welcome back, Nickj!';
         btn.style.background = 'linear-gradient(135deg,#059669,#34d399)';
         setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);

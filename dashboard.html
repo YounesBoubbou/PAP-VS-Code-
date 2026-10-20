@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard — Professional Adherence Program</title>
+  <title>Dashboard — Patient Adherence Program</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -153,13 +153,13 @@
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex items-center justify-between h-[70px]">
       <!-- Logo -->
-      <div class="flex items-center gap-8">
+      <div class="flex items-center gap-4 sm:gap-8">
         <a href="index.html" class="flex items-center gap-3 group">
           <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-base shadow-teal-sm"
                style="background:linear-gradient(135deg,#0a8f8f,#1ab3b3)">✚</div>
-          <span class="text-white font-semibold text-lg tracking-snug hidden md:inline">Professional Adherence Program</span>
+          <span class="text-white font-semibold text-lg tracking-snug hidden md:inline">Patient Adherence Program</span>
         </a>
-        <nav class="hidden sm:flex items-center gap-6">
+        <nav class="flex items-center gap-4 sm:gap-6">
           <a href="dashboard.html" class="text-white text-sm font-medium" style="transition:color 0.15s">Dashboard</a>
           <a href="exercise-logbook.html" class="text-white/70 hover:text-white text-sm font-medium" style="transition:color 0.15s">Exercise Library</a>
         </nav>
@@ -347,25 +347,15 @@
 
     <!-- Form -->
     <form onsubmit="handleAddPatient(event)" class="p-7">
-      <!-- Name -->
+      <!-- Patient ID -->
       <div class="mb-4">
-        <label class="block text-xs font-semibold mb-1.5" style="color:#0d1f3c">Full Name *</label>
-        <input type="text" id="new-name" required placeholder="Jane Smith" class="dash-input" />
-      </div>
-      <!-- Email -->
-      <div class="mb-4">
-        <label class="block text-xs font-semibold mb-1.5" style="color:#0d1f3c">Email Address</label>
-        <input type="email" id="new-email" placeholder="jane@email.com" class="dash-input" />
+        <label class="block text-xs font-semibold mb-1.5" style="color:#0d1f3c">Patient ID number *</label>
+        <input type="text" id="new-name" required placeholder="e.g. P-1042" class="dash-input" />
       </div>
       <!-- Phone -->
       <div class="mb-4">
         <label class="block text-xs font-semibold mb-1.5" style="color:#0d1f3c">Phone Number</label>
         <input type="tel" id="new-phone" placeholder="(555) 123-4567" class="dash-input" />
-      </div>
-      <!-- Pathology -->
-      <div class="mb-4">
-        <label class="block text-xs font-semibold mb-1.5" style="color:#0d1f3c">Pathology</label>
-        <input type="text" id="new-pathology" placeholder="e.g. ACL Tear, Parkinson's..." class="dash-input" />
       </div>
       <!-- Notes -->
       <div class="mb-4">
@@ -424,9 +414,11 @@
 
   // ── Data helpers ──
   function getPatients() {
-    const patients = JSON.parse(localStorage.getItem('pap_patients') || '[]');
+    let patients = JSON.parse(localStorage.getItem('pap_patients') || '[]');
+    // Drop the old demo patients if they are still in this browser's storage
+    let migrated = patients.some(p => String(p.id).startsWith('pat_seed_'));
+    patients = patients.filter(p => !String(p.id).startsWith('pat_seed_'));
     // Migrate old scheduledDate (string) → scheduledDates (array)
-    let migrated = false;
     patients.forEach(p => {
       if (!p.scheduledDates) {
         p.scheduledDates = p.scheduledDate ? [p.scheduledDate] : [];
@@ -441,22 +433,6 @@
     localStorage.setItem('pap_patients', JSON.stringify(patients));
   }
 
-  function seedPatientData() {
-    const today = new Date();
-    const todayStr = today.toISOString().slice(0, 10);
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const tomorrowStr = tomorrow.toISOString().slice(0, 10);
-
-    const patients = [
-      { id:'pat_seed_1', name:'Maria Garcia', email:'maria.garcia@email.com', phone:'(555) 234-5678', pathology:'Chronic Disease Management', notes:'Diabetes Type 2, currently on metformin. Weekly check-in calls preferred.', scheduledDates: [todayStr+'T10:00'], createdAt: new Date().toISOString() },
-      { id:'pat_seed_2', name:'James Wilson', email:'james.w@email.com', phone:'(555) 345-6789', pathology:'Post-Surgical Recovery', notes:'Knee replacement 2 weeks ago. Physical therapy adherence tracking.', scheduledDates: [todayStr+'T14:30'], createdAt: new Date().toISOString() },
-      { id:'pat_seed_3', name:'Sarah Chen', email:'sarah.chen@email.com', phone:'(555) 456-7890', pathology:'Mental Health & Behavioral', notes:'Anxiety management program. Prefers afternoon calls.', scheduledDates: [todayStr+'T16:00'], createdAt: new Date().toISOString() },
-      { id:'pat_seed_4', name:'Robert Johnson', email:'r.johnson@email.com', phone:'(555) 567-8901', pathology:'Respiratory & Pulmonary', notes:'COPD management. Inhaler technique follow-up needed.', scheduledDates: [tomorrowStr+'T09:00'], createdAt: new Date().toISOString() },
-      { id:'pat_seed_5', name:'Linda Thompson', email:'linda.t@email.com', phone:'(555) 678-9012', pathology:'Senior & Geriatric Care', notes:'Multiple medications. Caregiver (daughter) involved in calls.', scheduledDates: [tomorrowStr+'T11:00'], createdAt: new Date().toISOString() }
-    ];
-    savePatients(patients);
-  }
 
   // ── Render patient list ──
   let allPatients = [];
@@ -494,7 +470,7 @@
                style="background:linear-gradient(135deg,#0d1f3c,#0a8f8f)">${initial}</div>
           <div class="flex-1 min-w-0">
             <div class="font-semibold text-navy text-sm truncate">${p.name}</div>
-            <div class="text-slate-400 text-xs truncate">${p.pathology || 'No pathology'}</div>
+            ${p.pathology ? `<div class="text-slate-400 text-xs truncate">${p.pathology}</div>` : ''}
           </div>
           <span class="text-slate-300 text-sm flex-shrink-0">&#8250;</span>
         </button>`;
@@ -539,18 +515,18 @@
                style="background:linear-gradient(135deg,#0d1f3c,#0a8f8f)">${initial}</div>
           <div>
             <div class="font-bold text-navy text-lg">${p.name}</div>
-            <div class="text-slate-400 text-sm">${p.pathology || 'No pathology assigned'}</div>
+            ${p.pathology ? `<div class="text-slate-400 text-sm">${p.pathology}</div>` : ''}
           </div>
         </div>
 
         <!-- Info rows -->
-        <div class="flex gap-4 mb-5">
+        ${p.email ? `<div class="flex gap-4 mb-5">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center bg-teal-50 text-teal flex-shrink-0 text-base">📧</div>
           <div>
             <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Email</div>
-            <div class="font-medium text-navy text-sm">${p.email || 'Not provided'}</div>
+            <div class="font-medium text-navy text-sm">${p.email}</div>
           </div>
-        </div>
+        </div>` : ''}
 
         <div class="flex gap-4 mb-5">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center bg-teal-50 text-teal flex-shrink-0 text-base">📱</div>
@@ -560,13 +536,13 @@
           </div>
         </div>
 
-        <div class="flex gap-4 mb-5">
+        ${p.pathology ? `<div class="flex gap-4 mb-5">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center bg-teal-50 text-teal flex-shrink-0 text-base">🩺</div>
           <div>
             <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Pathology</div>
-            <div class="font-medium text-navy text-sm">${p.pathology || 'Not assigned'}</div>
+            <div class="font-medium text-navy text-sm">${p.pathology}</div>
           </div>
-        </div>
+        </div>` : ''}
 
         <div class="flex gap-4 mb-5">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center bg-teal-50 text-teal flex-shrink-0 text-base">📅</div>
@@ -787,9 +763,7 @@
       document.body.style.overflow = '';
       // Reset form
       document.getElementById('new-name').value = '';
-      document.getElementById('new-email').value = '';
       document.getElementById('new-phone').value = '';
-      document.getElementById('new-pathology').value = '';
       document.getElementById('new-notes').value = '';
       // Reset scheduled list to single empty row
       document.getElementById('new-scheduled-list').innerHTML = `
@@ -817,9 +791,7 @@
     const patient = {
       id: 'pat_' + Date.now(),
       name: name,
-      email: document.getElementById('new-email').value.trim(),
       phone: document.getElementById('new-phone').value.trim(),
-      pathology: document.getElementById('new-pathology').value,
       notes: document.getElementById('new-notes').value.trim(),
       scheduledDates: scheduledDates,
       createdAt: new Date().toISOString()
@@ -1140,9 +1112,6 @@
       document.getElementById('user-greeting').textContent = 'Welcome, ' + user.username;
       document.getElementById('popup-user-initial').textContent = user.username.charAt(0).toUpperCase();
       document.getElementById('popup-user-name').textContent = user.username;
-    }
-    if (!localStorage.getItem('pap_patients')) {
-      seedPatientData();
     }
     renderPatientList();
     renderTodaysCalls();
